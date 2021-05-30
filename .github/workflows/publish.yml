@@ -4,6 +4,10 @@ on:
   push:
     tags: [ v* ]
 
+defaults:
+  run:
+    working-directory: src
+
 jobs:
   build:
 
@@ -17,7 +21,16 @@ jobs:
         dotnet-version:  5.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
     - name: Build
-      run: dotnet build --no-restore -c Release
+      run: dotnet build --no-restore -c Release /p:AssemblyVersion=${{ steps.get_version.outputs.VERSION }}
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Create the package
+      run: dotnet pack FlareStudio.Apprise -c Release --no-build /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+    - name: Publish the package to nuget.org
+      run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
