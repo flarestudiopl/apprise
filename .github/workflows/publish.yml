@@ -4,6 +4,10 @@ on:
   push:
     tags: [ v* ]
 
+defaults:
+  run:
+    working-directory: src
+
 jobs:
   build:
 
