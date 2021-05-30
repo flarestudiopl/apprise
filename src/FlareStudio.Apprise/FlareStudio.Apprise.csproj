@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataAccess\Migrations\00001_initial.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DataAccess\Migrations\00001_initial.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.90" />
+    <PackageReference Include="dbup-sqlserver" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RazorLight" Version="2.0.0-rc.3" />
+  </ItemGroup>
+
+</Project>
