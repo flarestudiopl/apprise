@@ -1,6 +1,6 @@
 ﻿namespace FlareStudio.Apprise.Domain
 {
-    public enum MessageState : byte
+    internal enum MessageState : byte
     {
         Enqueued,
         Sent,

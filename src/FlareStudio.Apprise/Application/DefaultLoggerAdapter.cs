@@ -2,7 +2,7 @@
 
 namespace FlareStudio.Apprise.Application
 {
-    public class DefaultLoggerAdapter : ILoggerPort
+    internal class DefaultLoggerAdapter : ILoggerPort
     {
         public void LogException(string message, Exception exception)
         {
