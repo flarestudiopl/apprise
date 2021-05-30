@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>flarestudio.pl</Authors>
+    <Description>Templated e-mail notification engine.</Description>
+    <Copyright>Copyright 2021 Michał Kazimierczak</Copyright>
+    <PackageProjectUrl>https://github.com/flarestudiopl/apprise</PackageProjectUrl>
+    <PackageTags>email notification template</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
